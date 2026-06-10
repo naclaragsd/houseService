@@ -8,49 +8,54 @@ window.addEventListener("scroll", () => {
 // Scroll reveal
 const observer = new IntersectionObserver(
   (entries) => {
-    entries.forEach((el) => {
-      if (el.isIntersecting) {
-        el.target.classList.add("visible");
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
       }
     });
   },
-  { threshold: 0.12 },
+  { threshold: 0.12 }
 );
-
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-// Steps reveal
+// Steps reveal — corrigido para reanimar corretamente
 const stepObserver = new IntersectionObserver(
   (entries) => {
-    entries.forEach((el) => {
-      if (el.isIntersecting) {
-        const steps = document.querySelectorAll(".step");
+    entries.forEach((entry) => {
+      const steps = document.querySelectorAll(".step");
+      if (entry.isIntersecting) {
         steps.forEach((step, i) => {
           setTimeout(() => step.classList.add("visible"), i * 150);
         });
+      } else {
+        // Remove a classe quando sair da viewport para reanimar ao voltar
+        steps.forEach((step) => step.classList.remove("visible"));
       }
     });
   },
-  { threshold: 0.2 },
+  { threshold: 0.2 }
 );
-
 const stepsSection = document.querySelector(".steps-list");
 if (stepsSection) stepObserver.observe(stepsSection);
 
 // Reputation bars animate on scroll
 const barObserver = new IntersectionObserver(
   (entries) => {
-    entries.forEach((el) => {
-      if (el.isIntersecting) {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
         document.querySelectorAll(".rep-bar").forEach((bar) => {
           bar.style.width = bar.getAttribute("data-width");
+        });
+      } else {
+        // Reseta as barras ao sair da viewport
+        document.querySelectorAll(".rep-bar").forEach((bar) => {
+          bar.style.width = "0%";
         });
       }
     });
   },
-  { threshold: 0.3 },
+  { threshold: 0.3 }
 );
-
 const repSection = document.querySelector(".reputation-section");
 if (repSection) barObserver.observe(repSection);
 
@@ -105,8 +110,7 @@ const statsObserver = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.5 },
+  { threshold: 0.5 }
 );
-
 const statsBanner = document.querySelector(".stats-banner");
 if (statsBanner) statsObserver.observe(statsBanner);
