@@ -104,9 +104,7 @@ nav.scrolled {
   font-weight: 600;
   font-size: 0.93rem;
   cursor: pointer;
-  transition:
-    background 0.2s,
-    transform 0.2s;
+  transition: background 0.2s, transform 0.2s;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -136,11 +134,7 @@ nav.scrolled {
   right: -120px;
   width: 600px;
   height: 600px;
-  background: radial-gradient(
-    circle,
-    rgba(0, 191, 166, 0.12) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle, rgba(0, 191, 166, 0.12) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -151,11 +145,7 @@ nav.scrolled {
   left: -80px;
   width: 400px;
   height: 400px;
-  background: radial-gradient(
-    circle,
-    rgba(0, 191, 166, 0.07) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle, rgba(0, 191, 166, 0.07) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -264,9 +254,9 @@ h1 span {
   gap: 2px;
 }
 .trust-num {
-  font-family: "Raleway",sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1.55rem;
-  font-weight:300;
+  font-weight: 300;
   color: var(--navy);
   font-style: italic;
 }
@@ -520,7 +510,6 @@ section {
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
-  margin-top: 0;
 }
 
 .steps-list {
@@ -558,9 +547,11 @@ section {
   flex-shrink: 0;
 }
 
-.step-content{
-    flex: 1px
+/* CORRIGIDO: era "flex: 1px" */
+.step-content {
+  flex: 1;
 }
+
 .step-title {
   font-family: "Syne", sans-serif;
   font-weight: 700;
@@ -1050,9 +1041,11 @@ footer {
   margin-bottom: 48px;
 }
 
-.footer-brand{
-    flex:1px;
+/* CORRIGIDO: era "flex: 1px" */
+.footer-brand {
+  flex: 1;
 }
+
 .footer-logo {
   display: flex;
   align-items: center;
@@ -1154,8 +1147,7 @@ footer {
 }
 
 @keyframes float {
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0px);
   }
   50% {
